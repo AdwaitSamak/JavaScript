@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="lang">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    function addLang(langName) {
+      const newEl = document.createElement("li");
+      newEl.innerHTML = `${langName}`;
+      const parent = document.querySelector(".lang");
+      parent.appendChild(newEl);
+    }
+    addLang("Python");
+    addLang("CPP");
+
+    function addLangOptimal(lang) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(lang));
+      const parent = document.querySelector(".lang");
+      parent.appendChild(li);
+    }
+    addLangOptimal("Java");
+
+    const secondLang = document.querySelector("li:nth-child(2)");
+    const newli = document.createElement("li");
+    newli.textContent = "Mojo"; //can edit using three ways
+    secondLang.replaceWith(newli);
+    //1. change inner html
+    //2. create new element and replace it
+    //3. change outer html
+    const s = document.querySelector("li:first-child");
+    s.outerHTML = "<li>Typescript</li>";
+
+
+    //remove
+    const lastel=document.querySelector("li:last-child")
+    lastel.remove()   //removes last child 
+  </script>
+</html>
