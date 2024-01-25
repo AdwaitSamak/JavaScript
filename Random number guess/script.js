@@ -68,6 +68,7 @@ function newgame(){
     rem.innerHTML=`${11-guesscount}`
     input.removeAttribute('disabled')
     startover.removeChild(p)
+    playGame=true;
   })
 }
 
