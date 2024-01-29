@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121">
+    <div id="user"></div>
+  </body>
+  <script>
+    const url = "https://api.github.com/users/AdwaitSamak";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    let obj={};
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+      if (xhr.readyState === 4) {
+        const data = this.responseText;
+        console.log(data); //this shows current context
+        // console.log(typeof data);   //will come as string
+        obj = JSON.parse(data); //this will give object
+        // console.log(obj.followers);
+        updateUserData(obj)
+      }
+    };
+    xhr.send();
+
+    function updateUserData(obj) {
+        const userdata = document.getElementById("user");
+        userdata.innerHTML = `
+        <table>
+          <tr>
+            <th>Username</th>
+            <th>User Image</th>
+            <th>Followers</th>
+          </tr>
+          <tr>
+            <td>${obj.name}</td>
+            <td><img src="https://avatars.githubusercontent.com/u/88927689?v=4" width=100px height=100px></td>
+            <td style="text-align:center">${obj.followers}</td>
+          </tr>
+        </table>
+        `;
+        userdata.style.color = "white";
+      }
+  </script>
+</html>
