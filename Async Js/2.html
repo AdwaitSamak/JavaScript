@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Adwait</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    let ctr = 1;
+    document.getElementById("start").addEventListener("click", (e) => {
+      const start = () => {
+        console.log(`START ${ctr}`);
+        ctr++;
+      };
+      const print=setInterval(start, 1000);
+      document.getElementById("stop").addEventListener("click", (e) => {
+        clearInterval(print);
+        console.log("STOPPED");
+      });
+    });
+  </script>
+</html>
